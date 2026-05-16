@@ -28,6 +28,9 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     zip \
     opcache
 
+# Copy custom PHP configuration
+COPY docker/php/local.ini /usr/local/etc/php/conf.d/local.ini
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -55,7 +58,7 @@ RUN chown -R www-data:www-data /var/www/html \
 FROM nginx:alpine as production
 
 # Copy nginx configuration
-COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy application from base stage
 COPY --from=base /var/www/html /var/www/html

@@ -3,7 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
@@ -17,3 +16,8 @@ RAILWAY_TROUBLESHOOTING.md
 RAILWAY_MYSQL_FIX.md
 RAILWAY_DEPLOY.md
 PULL_REQUEST_TEMPLATE.md
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
+config.bat
