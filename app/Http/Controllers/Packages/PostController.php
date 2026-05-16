@@ -7,7 +7,7 @@ use App\Destinations;
 use App\Http\Controllers\Controller;
 use App\Tag;
 
-class Postcontroller extends Controller
+class PostController extends Controller
 {
     public function show(Destinations $destination)
     {
