@@ -5,12 +5,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: base
     container_name: tours-travel-app
     restart: unless-stopped
     working_dir: /var/www/html
-    volumes:
-      - .:/var/www/html
-      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - tours-network
     depends_on:
@@ -18,14 +16,14 @@ services:
       - redis
 
   nginx:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
     container_name: tours-travel-nginx
     restart: unless-stopped
     ports:
       - "8081:80"
-    volumes:
-      - .:/var/www/html
-      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - tours-network
     depends_on:
